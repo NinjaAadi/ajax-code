@@ -1,0 +1,51 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <form id ="myform"action="load.php" method="POST"></form> 
+                <input id="username"type="text" name="username"/>
+                <input id="password"type="password" name="password"/>
+                <button id="submit"type="submit"name="submit">submit</button>
+        </form>
+    </div>
+    
+</body>
+</html>
+<script>
+    //$("id-which is to be changed").load("url",function); is one method
+$(document).ready(function(){
+    $("#submit").click(function(e){
+            console.log("helli");
+            e.preventDefault();
+            console.log($("#username").val(),$("#password").val());
+            $.ajax({
+            url:$("#myform").attr('action'),
+            type:"POST",
+            data: {
+            username:$("#username").val(),
+            password:$("#password").val()
+            },
+            success :function(data){
+                console.log("success");
+            }
+        })
+        
+    })
+})
+</script>
